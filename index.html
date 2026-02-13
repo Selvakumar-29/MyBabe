@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Pappu ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  text-align:center;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Sections */
+.section{
+  margin:40px auto;
+  padding:40px 20px;
+  width:90%;
+  max-width:1000px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Title */
+h1{
+  margin-top:40px;
+  font-size:45px;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{ text-shadow:0 0 10px white;}
+  to{ text-shadow:0 0 35px #ff004c;}
+}
+
+button{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-weight:bold;
+  cursor:pointer;
+  background:white;
+  color:#ff4d6d;
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.1);
+  background:#ff4d6d;
+  color:white;
+}
+
+input{
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  margin:10px;
+  text-align:center;
+}
+
+/* Gallery */
+.gallery img{
+  width:220px;
+  border-radius:20px;
+  margin:10px;
+  transition:0.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* Floating Hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:rain 6s linear infinite;
+}
+@keyframes rain{
+  0%{ transform:translateY(-10vh); opacity:1;}
+  100%{ transform:translateY(100vh); opacity:0;}
+}
+
+/* Name Heart */
+.nameHeart{
+  font-size:70px;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{ transform:scale(1);}
+  50%{ transform:scale(1.2);}
+  100%{ transform:scale(1);}
+}
+
+/* Chocolate */
+.chocolate{
+  font-size:80px;
+  animation:bounce 2s infinite;
+}
+@keyframes bounce{
+  0%,100%{ transform:translateY(0);}
+  50%{ transform:translateY(-20px);}
+}
+
+/* Popup */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition:0.5s;
+  z-index:1000;
+}
+.popup.active{
+  visibility:visible;
+  opacity:1;
+}
+.popup-content{
+  background:linear-gradient(135deg,#ff4d6d,#ff1e56);
+  padding:40px;
+  border-radius:20px;
+  max-width:500px;
+}
+
+/* Confetti */
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  animation:confettiFall 3s linear forwards;
+}
+@keyframes confettiFall{
+  to{ transform:translateY(100vh) rotate(360deg); opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Hi My Beautiful Sowmi ❤️</h1>
+<p>Still Falling For You Since April 14 💕
+  Ur my lucky person ❤️ 
+</p>
+
+<button onclick="startMusic(this)">Play Our Song 🎵</button>
+
+<audio id="bgMusic" loop>
+  <source src="Malare.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Days Counter -->
+<div class="section">
+  <h2>Our Journey ❤️</h2>
+  <p id="daysCounter"></p>
+</div>
+
+<!-- Password Section -->
+<div class="section">
+  <h2>Secret Entry 🔐</h2>
+  <p>Enter my favorite nickname for you 😘</p>
+  <input type="text" id="passwordInput" placeholder="Enter here">
+  <br>
+  <button onclick="checkPassword()">Unlock Surprise</button>
+</div>
+
+<!-- Gallery -->
+<div class="section">
+  <h2> Beautiful Memories 📸</h2>
+  <div class="gallery">
+    <img src="pic1.jpg">
+    <img src="pic2.jpg">
+    <img src="pic3.jpg">
+    <img src="pic4.webp">
+    <img src="pic5.jpg">
+    <img src="pic6.webp">
+  </div>
+</div>
+
+<!-- Name Heart -->
+<div class="section">
+  <h2>My Heart Belongs To 💖</h2>
+  <div class="nameHeart">❤️ My Beauty Sowmi ❤️</div>
+</div>
+
+<!-- Chocolate -->
+<div class="section">
+  <h2>Sweet Gift 🍫</h2>
+  <div class="chocolate">🍫</div>
+  <p>You are sweeter than this chocolate, Pappu 😘</p>
+</div>
+
+<!-- Surprise Popup -->
+<div class="popup" id="surprisePopup">
+  <div class="popup-content">
+    <h2>Surpriseeee 💖</h2>
+    <p>I still choose you every single day, Pondadii. 💖
+      Ur My Chella Pondadii , I Love You so Much Dii
+    </p>
+    <button onclick="closePopup('surprisePopup')">Close</button>
+  </div>
+</div>
+
+<!-- Final Love Letter -->
+<div class="popup" id="finalPopup">
+  <div class="popup-content">
+    <h2>My Final Secret 💌</h2>
+    <p>
+    5 years ago on April 14,  
+    my life changed forever.  
+    Your smile became my happiness,  
+    your laugh became my peace.  
+    No matter what happens,  
+    I will always choose you, Pappu. ❤️
+    </p>
+    <button onclick="closePopup('finalPopup')">Close</button>
+  </div>
+</div>
+
+<script>
+
+/* Days Counter */
+let startDate = new Date("2021-04-14"); 
+let today = new Date();
+let diffDays = Math.floor((today - startDate)/(1000*60*60*24));
+document.getElementById("daysCounter").innerHTML =
+"We have been in love for ❤️ " + diffDays + " days ❤️";
+
+/* Music */
+function startMusic(btn){
+  document.getElementById("bgMusic").play();
+  btn.style.display="none";
+}
+
+/* Password Check */
+function checkPassword(){
+  let value=document.getElementById("passwordInput").value.toLowerCase();
+  if(value==="pappu" || value==="pondadi"){
+    document.getElementById("surprisePopup").classList.add("active");
+    launchConfetti();
+  } else {
+    alert("Wrong nickname 😜 Try again!");
+  }
+}
+
+/* Close Popup */
+function closePopup(id){
+  document.getElementById(id).classList.remove("active");
+}
+
+/* Confetti */
+function launchConfetti(){
+  for(let i=0;i<100;i++){
+    let conf=document.createElement("div");
+    conf.className="confetti";
+    conf.style.left=Math.random()*100+"vw";
+    conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(conf);
+    setTimeout(()=>{conf.remove();},3000);
+  }
+}
+
+/* Secret Love Letter Only Once */
+let loveLetterShown = localStorage.getItem("loveLetterShown");
+
+window.addEventListener("scroll",()=>{
+  if(window.scrollY > 500 && !loveLetterShown){
+    document.getElementById("finalPopup").classList.add("active");
+    localStorage.setItem("loveLetterShown", "true");
+    loveLetterShown = true;
+  }
+});
+
+/* Continuous Hearts */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},6000);
+},500);
+
+</script>
+
+</body>
+</html>
